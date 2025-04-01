@@ -526,7 +526,7 @@ describe('Uploads', () => {
       slug: adminUploadControlSlug,
       auth: true,
     })
-    await expect(mediaDoc.filename).toContainText('universal-truth.jpg')
+    await expect(mediaDoc.filename).toHaveText('universal-truth')
   })
 
   test('should load a file using a URL reference from custom controls', async () => {
@@ -542,7 +542,7 @@ describe('Uploads', () => {
       slug: adminUploadControlSlug,
       auth: true,
     })
-    await expect(mediaDoc.filename).toContainText('universal-truth.jpg')
+    await expect(mediaDoc.filename).toHaveText('universal-truth')
   })
 
   test('should render adminThumbnail when using a function', async () => {
