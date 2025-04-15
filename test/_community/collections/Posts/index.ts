@@ -6,6 +6,7 @@ export const postsSlug = 'posts'
 
 export const PostsCollection: CollectionConfig = {
   slug: postsSlug,
+  orderable: true,
   admin: {
     useAsTitle: 'title',
   },
@@ -20,6 +21,11 @@ export const PostsCollection: CollectionConfig = {
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [...defaultFeatures],
       }),
+    },
+    {
+      name: 'group',
+      type: 'group',
+      fields: [],
     },
   ],
 }

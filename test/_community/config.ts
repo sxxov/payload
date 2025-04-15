@@ -1,3 +1,4 @@
+import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { fileURLToPath } from 'node:url'
 import path from 'path'
@@ -24,6 +25,9 @@ export default buildConfigWithDefaults({
     // ...add more globals here
     MenuGlobal,
   ],
+  db: sqliteAdapter({
+    client: { url: 'file:./payload.sqlite' },
+  }),
   onInit: async (payload) => {
     await payload.create({
       collection: 'users',

@@ -49,29 +49,24 @@ describe('_Community Tests', () => {
   // --__--__--__--__--__--__--__--__--__
 
   it('local API example', async () => {
-    const newPost = await payload.create({
+    const newPost1 = await payload.create({
       collection: postsSlug,
       data: {
-        title: 'LOCAL API EXAMPLE',
+        title: 'LOCAL API EXAMPLE 1',
       },
       context: {},
     })
 
-    expect(newPost.title).toEqual('LOCAL API EXAMPLE')
-  })
+    expect(newPost1.title).toEqual('LOCAL API EXAMPLE 1')
 
-  it('rest API example', async () => {
-    const data = await restClient
-      .POST(`/${postsSlug}`, {
-        body: JSON.stringify({
-          title: 'REST API EXAMPLE',
-        }),
-        headers: {
-          Authorization: `JWT ${token}`,
-        },
-      })
-      .then((res) => res.json())
+    const newPost2 = await payload.create({
+      collection: postsSlug,
+      data: {
+        title: 'LOCAL API EXAMPLE 2',
+      },
+      context: {},
+    })
 
-    expect(data.doc.title).toEqual('REST API EXAMPLE')
+    expect(newPost2.title).toEqual('LOCAL API EXAMPLE 2')
   })
 })
